@@ -6,17 +6,20 @@
 /*   By: cyglardo <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:24:08 by cyglardo          #+#    #+#             */
-/*   Updated: 2024/10/24 12:38:33 by cyglardo         ###   ########.fr       */
+/*   Updated: 2024/10/28 16:55:02 by cyglardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # def LIBFTPRINTF_H
-# include <unistd.h> 
+# include <stdarg.h>
+//# include "libft.h" 
+# include <unistd.h>
+# include <stdlib.h>
 
 # DEC_BASE = "0123456789"
-# hex_BASE = "0123456789abcdef"
-# HEX_BASE = "0123456789ABCDEF"
+# HEX_BASE_LOW = "0123456789abcdef"
+# HEX_BASE_UP = "0123456789ABCDEF"
 
 int	ft_printf(const char *, ...);
 
