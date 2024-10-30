@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdlib.h>
 
 static int	get_nelem(int n, int base)
 {
@@ -49,14 +50,14 @@ static int	get_temp(int n)
 	return (temp);
 }
 
-char	*ft_itoa_base(int n, int base)
+char	*itoa_base(int n, int base)
 {
-	int		nelem;
-	int		i;
-	int		temp;
-	char	*str;
+	unsigned int	nelem;
+	unsigned int	i;
+	unsigned int	temp;
+	char			*str;
 
-	nelem = get_nelem(n);
+	nelem = get_nelem(n, base);
 	str = (char *)malloc((nelem + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
