@@ -32,9 +32,7 @@ int	is_in_set(char c)
 
 int	call_ft_by_type(char c, va_list args, int result)	
 {
-	//void	*p_temp;
-	//int		address;
-	char	*s_temp;
+	void	*p_temp;
 
 	if (c == '%')
 		result = putchar_fd('%', 1, result);
@@ -42,24 +40,20 @@ int	call_ft_by_type(char c, va_list args, int result)
 	//	result = putstr_fd(itoa_base(va_arg(args, int), 10), 1, result);
 	//else if (c == 'u')
 	//	result = putstr_fd(itoa_base((int)va_arg(args, unsigned int), 10), 1, result);
-	//else if (c == 'x' || c == 'X')
+	//else if (c == 'x')
 	//	result = putstr_fd(itoa_base(va_arg(args, int), 16), 1, result);
+	//else if (c == 'X')
+	//	!!toupper!!
 	else if (c == 'c')
 		result = putchar_fd((char)va_arg(args, int), 1, result);
 	else if (c == 's')
-	{
-		s_temp = malloc(4);
-		s_temp = va_arg(args, char *);
-		result = putstr_fd(s_temp, 1, result);
-		free(s_temp);
-		//result = putstr_fd(va_arg(args, char *), 1, result);
-	}
-	/*else if (c == 'p')
+		result = putstr_fd(va_arg(args, char *), 1, result);
+	else if (c == 'p')
 	{
 		p_temp = va_arg(args, void *);
-		address = &p_temp;
-		result = putstr_fd((char *)address, 1, result);
-	}*/
+		printf("Debug: %p\n", p_temp);
+		result = putstr_fd((char *)&p_temp, 1, result);
+	}
 	return (result);
 }
 
