@@ -14,6 +14,7 @@
 # define LIBFTPRINTF_H
 # include <stdarg.h>
 //# include "libft.h"
+# include "write.c"
 # include "itoa_base.c"
 # include <unistd.h>
 # include <stdlib.h>

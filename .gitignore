@@ -4,3 +4,4 @@
 .vscode/settings.json
 *.o
 *.exe
+itoa_base.c
