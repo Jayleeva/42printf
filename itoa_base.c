@@ -52,22 +52,22 @@ static int	get_temp(int n)
 
 char	*itoa_base(int n, int base)
 {
-	unsigned int	nelem;
-	unsigned int	i;
-	unsigned int	temp;
-	char			*str;
-
+	char	*str;
+	int		nelem;
+	int		k;
+	int		temp;
+	
 	nelem = get_nelem(n, base);
 	str = (char *)malloc((nelem + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	temp = get_temp(n);
-	i = nelem -1;
-	while (i > 0)
+	k = nelem -1;
+	while (k > 0)
 	{
-		str[i] = (temp % base) + '0';
+		str[k] = (temp % base) + '0';
 		temp = temp / base;
-		i --;
+		k --;
 	}
 	if (n < 0)
 		str[0] = '-';

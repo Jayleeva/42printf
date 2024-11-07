@@ -32,54 +32,64 @@ int	is_in_set(char c)
 
 int	call_ft_by_type(char c, va_list args, int result)	
 {
-	void	*p_temp;
+	//void	*p_temp;
 
 	if (c == '%')
 		result = putchar_fd('%', 1, result);
-	//else if (c == 'd' || c == 'i')
-	//	result = putstr_fd(itoa_base(va_arg(args, int), 10), 1, result);
+	else if (c == 'c')
+		result = putchar_fd((char)va_arg(args, int), 1, result);
+	else if (c == 's')
+		result = putstr_fd(va_arg(args, char *), 1, result);
+	/*else if (c == 'p') //faire un itoa?
+	{
+		p_temp = va_arg(args, void *);
+		printf("Debug: %p\n", p_temp);
+		result = putstr_fd((char *)&p_temp, 1, result);
+	}*/
+	else if (c == 'd' || c == 'i')
+		result = putstr_fd(itoa_base(va_arg(args, int), 10), 1, result);
 	//else if (c == 'u')
 	//	result = putstr_fd(itoa_base((int)va_arg(args, unsigned int), 10), 1, result);
 	//else if (c == 'x')
 	//	result = putstr_fd(itoa_base(va_arg(args, int), 16), 1, result);
 	//else if (c == 'X')
-	//	!!toupper!!
-	else if (c == 'c')
-		result = putchar_fd((char)va_arg(args, int), 1, result);
-	else if (c == 's')
-		result = putstr_fd(va_arg(args, char *), 1, result);
-	else if (c == 'p')
-	{
-		p_temp = va_arg(args, void *);
-		printf("Debug: %p\n", p_temp);
-		result = putstr_fd((char *)&p_temp, 1, result);
-	}
+	//	result = putstr_fd(ft_toupper(itoa_base(va_arg(args, int), 16), 1, result));
 	return (result);
 }
 
 int	ft_printf(const char *s, ...)
 {
 	va_list	args;
-	int		i;
+	int		j;
 	int		result;
 
 	va_start(args, s);
 	result = 0;
-	i = 1;
-	while (s[i])
+	j = 0;
+	while (j < ft_strlen(s) - 1)
 	{
-		if (s[i -1] == '%')
+		if (s[j] == '%')
 		{
-			if (is_in_set(s[i]) == 1)
-				result = call_ft_by_type(s[i], args, result);
+			if (is_in_set(s[j +1]) == 1)
+			{
+				if (s[j +1] == '%')
+					result = putchar_fd('%', 1, result);
+				else if (s[j +1] == 'c')
+					result = putchar_fd((char)va_arg(args, int), 1, result);
+				else if (s[j +1] == 's')
+					result = putstr_fd(va_arg(args, char *), 1, result);
+				else if (s[j +1] == 'd' || s[j +1] == 'i')
+					printf("%d", s[j + 1]);
+					//result = putstr_fd(itoa_base(va_arg(args, int), 10), 1, result);
+				//result = call_ft_by_type(s[i +1], args, result);
+				j ++;
+			}
 			else
 				return (-1);
 		}
-		else if (s[i -2] == '%')
-			i ++;
 		else
-			result = putchar_fd(s[i -1], 1, result);
-		i ++;
+			result = putchar_fd(s[j], 1, result);
+		j ++;
 	}
 	va_end(args);
 	//if () si types % et args correspondent pas, ou pas le bon nombre d'args?
@@ -94,12 +104,11 @@ int	main(void)
 	//char			c2 = 'b';
 	char			s[] = "hey";
 	void			*p = &s;
-	//void				p[] = {0, 1, 2, 3};
-	int				d = 0;
-	int				i = -2147483648;
+	int				d = 35;
+	int				i = 42;
 	unsigned int	u = 2147483647;
-	int				hex = 0xf;
-	int				HEX = 0xF;
+	int				hex = 0x2a;
+	int				HEX = 0x2A;
 
 	ft_printf("CUSTOM : \n%c \n%s \n%p \n%d \n%i \n%u \n%x \n%X \n%%", c, s, p, d, i, u, hex, HEX);
 	//ft_printf("CUSTOM : \n%c \n%s \n%p \n%d \n%i \n%u \n%x \n%X \n%%", c, s, p, d, i, u, hex, HEX);
