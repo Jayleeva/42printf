@@ -22,7 +22,7 @@ static int	get_nelem(int n, int base)
 	if (n < 0)
 	{
 		sign = 1;
-		if (n == -2147483648)
+		if (n == -2147483648) // 0x80000000
 			n ++;
 		n = n * -1;
 	}
@@ -43,7 +43,7 @@ static int	get_temp(int n)
 	temp = n;
 	if (n < 0)
 	{
-		if (n == -2147483648)
+		if (n == -2147483648) // 0x80000000
 			temp ++;
 		temp = temp * -1;
 	}
@@ -73,7 +73,7 @@ char	*itoa_base(int n, int base)
 		str[0] = '-';
 	else
 		str[0] = (temp % base) + '0';
-	if (n == -2147483648)
+	if (n == -2147483648) // 0x80000000
 		str[nelem -1] = '8';
 	str[nelem] = '\0';
 	return (str);
