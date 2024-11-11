@@ -6,7 +6,7 @@
 /*   By: cyglardo <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:19:41 by cyglardo          #+#    #+#             */
-/*   Updated: 2024/11/11 11:13:55 by cyglardo         ###   ########.fr       */
+/*   Updated: 2024/11/11 11:13:41 by cyglardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int	get_nelem_base(int n, int base)
+static int	get_nelem(int n)
 {
 	int	sign;
 	int	nelem;
@@ -23,22 +23,21 @@ static int	get_nelem_base(int n, int base)
 	if (n < 0)
 	{
 		sign = 1;
-		if (n == -2147483648) // 0x80000000
+		if (n == -2147483648)
 			n ++;
 		n = n * -1;
-		//printf("\n<< %i >>\n", n);
 	}
 	else
 		sign = 0;
-	while (n > base -1)
+	while (n > 9)
 	{
 		nelem ++;
-		n = n / base;
+		n = n / 10;
 	}
 	return (nelem + sign);
 }
 
-static int	get_temp_base(int n)
+static int	get_temp(int n)
 {
 	int	temp;
 
@@ -52,34 +51,31 @@ static int	get_temp_base(int n)
 	return (temp);
 }
 
-char	*itoa_base(int n, int base)
+char	*itoa(int n)
 {
 	char	*str;
 	int		nelem;
 	int		k;
 	int		temp;
 	
-	nelem = get_nelem_base(n, base);
+	nelem = get_nelem(n);
 	str = (char *)malloc((nelem + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
-	temp = get_temp_base(n);
+	temp = get_temp(n);
 	k = nelem -1;
 	while (k > 0)
 	{
-		str[k] = (temp % base) + '0';
-		temp = temp / base;
+		str[k] = (temp % 10) + '0';
+		temp = temp / 10;
 		k --;
 	}
 	if (n < 0)
 		str[0] = '-';
 	else
-		str[0] = (temp % base) + '0';
+		str[0] = (temp % 10) + '0';
 	if (n == -2147483648)
-	{
 		str[nelem -1] = '8';
-		//printf("\n<< %s >>\n", str);
-	}
 	str[nelem] = '\0';
 	return (str);
 }
