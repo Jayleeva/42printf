@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   itoa_base.c                                        :+:      :+:    :+:   */
+/*   itoa_unsigned.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyglardo <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:19:41 by cyglardo          #+#    #+#             */
-/*   Updated: 2024/11/11 15:55:56 by cyglardo         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:58:57 by cyglardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int	get_nelem_base(unsigned long long n, unsigned long long base)
+static int	get_nelem_unsigned(unsigned int n, unsigned int base)
 {
 	int					nelem;
 
@@ -27,13 +27,13 @@ static int	get_nelem_base(unsigned long long n, unsigned long long base)
 	return (nelem);
 }
 
-char	*itoa_base(unsigned long long n, unsigned long long base)
+char	*itoa_unsigned(unsigned int n, unsigned int base)
 {
 	char					*str;
 	int						nelem;
 	int						k;
 
-	nelem = get_nelem_base(n, base);
+	nelem = get_nelem_unsigned(n, base);
 	str = (char *)malloc((nelem + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);

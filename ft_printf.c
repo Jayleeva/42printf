@@ -6,7 +6,7 @@
 /*   By: cyglardo <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:27:12 by cyglardo          #+#    #+#             */
-/*   Updated: 2024/11/11 12:09:05 by cyglardo         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:03:55 by cyglardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	ft_printf(const char *s, ...)
 	va_list				args;
 	int					j;
 	int					result;
-	unsigned long int	*address;
 
 	va_start(args, s);
 	result = 0;
@@ -54,21 +53,17 @@ int	ft_printf(const char *s, ...)
 				else if (s[j +1] == 'd' || s[j +1] == 'i')
 					//putnbr(va_arg(args, int), *result); //force à utiliser partout un pointeur sur result!!
 					result = putstr_fd(itoa(va_arg(args, int)), 1, result);
-				else if (s[j +1] == 'p' || s[j +1] == 'x' || s[j +1] == 'X')
-				{
+				else if (s[j +1] == 'u')
+					result = putstr_fd(itoa_unsigned(va_arg(args, unsigned int), 10), 1, result);
+				if (s[j +1] == 'p')
+				{	
 					result = putstr_fd("0x", 1, result);
-					if (s[j +1] == 'p')
-					{	
-						address = va_arg(args, unsigned long int *);
-						result = putstr_fd(itoa_pointer(address, 16), 1, result);
-					}
-					else if (s[j +1] == 'x')
-						result = putstr_fd(itoa_base(va_arg(args, int), 16), 1, result);
-					else if (s[j +1] == 'X')
-						result = putstr_fd(ft_toupper(itoa_base(va_arg(args, int), 16)), 1, result);
+					result = putstr_fd(itoa_base(va_arg(args, unsigned long long), 16), 1, result);
 				}
-				//else if (s[j +1] == 'u')
-				//	printf("%u", va_arg(args, unsigned int));
+				else if (s[j +1] == 'x')
+					result = putstr_fd(itoa_base(va_arg(args, unsigned long long), 16), 1, result);
+				else if (s[j +1] == 'X')
+					result = putstr_fd(ft_toupper(itoa_base(va_arg(args, unsigned long long), 16)), 1, result);
 				j ++;
 			}
 			else
@@ -85,23 +80,23 @@ int	ft_printf(const char *s, ...)
 
 int	main(void)
 {
-	//char			c = 'a';
+	char			c = 'a';
 	char			s[] = "hey";
 	void			*p = &s;
-	//int				d = 2147483647;
-	//int				i = -2147483648;
-	//unsigned int	u = 4294967295;
-	//int				hex = 0x2a;
-	//int				HEX = 0x2B;
+	int				d = 2147483647;
+	int				i = -2147483648;
+	unsigned int	u = 4294967295;
+	int				hex = -0x2a;
+	int				HEX = -0x2B;
 
 	//ft_printf("CUSTOM : \n> %c", c);
-	ft_printf("CUSTOM : \n> %s", s);
+	//ft_printf("CUSTOM : \n> %s", s);
+	//ft_printf("CUSTOM : \n> %p", p);
 	//ft_printf("CUSTOM : \n> %d", d);
 	//ft_printf("CUSTOM : \n> %i", i);
 	//ft_printf("CUSTOM : \n> %u", u);
 	//ft_printf("CUSTOM : \n> %x", hex);
 	//ft_printf("CUSTOM : \n> %X", HEX);
-	ft_printf("CUSTOM : \n> %p", p);
-	//ft_printf("CUSTOM : \n> %c \n> %s \n> %d \n> %i \n> %u \n> %x \n> %X \n> %p \n> %%", c, s, d, i, u, hex, HEX, p);
-	//printf("\nOFFICIAL : \n> %x \n> %p", hex, p);
+	ft_printf("CUSTOM : \n> %c \n> %s \n> %p \n> %d \n> %i \n> %u \n> %x \n> %X \n> %%\n", c, s, p, d, i, u, hex, HEX);
+	printf("\nOFFICIAL : \n> %c \n> %s \n> %p \n> %d \n> %i \n> %u \n> %x \n> %X \n> %%\n", c, s, p, d, i, u, hex, HEX);
 }

@@ -6,7 +6,7 @@
 /*   By: cyglardo <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:24:08 by cyglardo          #+#    #+#             */
-/*   Updated: 2024/11/11 11:02:04 by cyglardo         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:03:53 by cyglardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 # include <stdarg.h>
 # include "write.c"
 # include "itoa.c"
+# include "itoa_unsigned.c"
 # include "itoa_base.c"
-# include "itoa_pointer.c"
 # include <unistd.h>
 # include <stdlib.h>
 
