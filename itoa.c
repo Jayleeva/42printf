@@ -6,7 +6,7 @@
 /*   By: cyglardo <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:19:41 by cyglardo          #+#    #+#             */
-/*   Updated: 2024/11/11 11:13:41 by cyglardo         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:05:49 by cyglardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int	get_nelem(int n)
+static int	get_nelem_(int n)
 {
 	int	sign;
 	int	nelem;
@@ -37,7 +37,7 @@ static int	get_nelem(int n)
 	return (nelem + sign);
 }
 
-static int	get_temp(int n)
+static int	get_temp_(int n)
 {
 	int	temp;
 
@@ -51,18 +51,18 @@ static int	get_temp(int n)
 	return (temp);
 }
 
-char	*itoa(int n)
+char	*itoa_(int n)
 {
 	char	*str;
 	int		nelem;
 	int		k;
 	int		temp;
-	
-	nelem = get_nelem(n);
+
+	nelem = get_nelem_(n);
 	str = (char *)malloc((nelem + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
-	temp = get_temp(n);
+	temp = get_temp_(n);
 	k = nelem -1;
 	while (k > 0)
 	{

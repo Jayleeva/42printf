@@ -6,17 +6,16 @@
 /*   By: cyglardo <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:19:41 by cyglardo          #+#    #+#             */
-/*   Updated: 2024/11/11 15:58:57 by cyglardo         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:36:06 by cyglardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 static int	get_nelem_unsigned(unsigned int n, unsigned int base)
 {
-	int					nelem;
+	int		nelem;
 
 	nelem = 0;
 	while (n > 0)
