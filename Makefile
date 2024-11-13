@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 
-SRC = ft_printf.c itoa.c itoa_base.c itoa_unsigned.c write.c 
+SRC = ft_printf.c itoa.c itoa_base.c write.c 
 OBJ = $(SRC:.c=.o)
 
 CC = cc
@@ -33,5 +33,3 @@ fclean: clean
 re: fclean all
 
 .PHONY : all clean fclean re
-
-#ou declarer print_unsigned et print_hexbase ?? make marche pas comme ca

@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 static int	get_nelem_base(unsigned long long n, unsigned long long base)
 {

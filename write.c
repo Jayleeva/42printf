@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <unistd.h>
 
 int	putchar_fd_(char c, int fd, int result)
 {
@@ -33,17 +32,7 @@ int	putstr_fd_(char *s, int fd, int result)
 	return (result);
 }
 
-int	ft_strlen_(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i ++;
-	return (i);
-}
-
-char	*ft_toupper(char *s)
+static char	*ft_toupper_(char *s)
 {
 	int	i;
 
@@ -55,4 +44,22 @@ char	*ft_toupper(char *s)
 		i ++;
 	}
 	return (s);
+}
+
+int	print_pointer(unsigned long long p, int result)
+{
+	result = putstr_fd_("0x", 1, result);
+	result = putstr_fd_(itoa_base(p, 16), 1, result);
+	return (result);
+}
+
+int	print_unsigned(unsigned int u, char type, int result)
+{
+	if (type == 'u')
+		result = putstr_fd_(itoa_base(u, 10), 1, result);
+	if (type == 'x')
+		result = putstr_fd_(itoa_base(u, 16), 1, result);
+	else if (type == 'X')
+		result = putstr_fd_(ft_toupper_(itoa_base(u, 16)), 1, result);
+	return (result);
 }
