@@ -69,7 +69,11 @@ Une condition vérifie si la chaîne reçue est nulle. Si c'est le cas, la fonct
 Le char est passé à write(). Le nombre de caractères imprimés est incrémenté. La fonction retourne ce nombre.
 
 # Fichier itoa.c
-## itoa()
 **Transforme l'int reçu en chaîne de caratères et retourne cette dernière**
 
-Une variable char* est créée afin de stocker le résultat.
+Même fonction que dans la libft.
+
+# Fichier itoa_base.c
+**Transforme l'unsigned int reçu en chaîne de caratères et retourne cette dernière**
+
+Même chose qu'itoa, sans la prise en charge d'int négatifs et donc de INT_MIN; de plus, les divisions et modulo par 10 d'itoa sont ici faites par la base reçue en argument. Les hexadécimaux sont pris en charge par des conditions qui vérifient si le nombre actuel est plus grand que 9: si c'est le cas, au lieu de prendre la valeur n % base + '0', le char indexé prend la valeur n % base + 'a' - 10. 
