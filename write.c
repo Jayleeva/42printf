@@ -6,11 +6,11 @@
 /*   By: cyglardo <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:22:08 by cyglardo          #+#    #+#             */
-/*   Updated: 2024/11/12 15:52:17 by cyglardo         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:39:39 by cyglardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	putchar_fd_(char c, int fd, int result)
 {
@@ -23,6 +23,11 @@ int	putstr_fd_(char *s, int fd, int result)
 {
 	int	i;
 
+	if (s == NULL)
+	{
+		result = putstr_fd_("(null)", 1, result);
+		return (result);
+	}
 	i = 0;
 	while (s[i])
 	{
@@ -48,18 +53,44 @@ static char	*ft_toupper_(char *s)
 
 int	print_pointer(unsigned long long p, int result)
 {
-	result = putstr_fd_("0x", 1, result);
-	result = putstr_fd_(itoa_base(p, 16), 1, result);
+	char	*str;
+
+	if (p == 0)
+		result = putstr_fd_("0x0", 1, result);
+	else
+	{
+		result = putstr_fd_("0x", 1, result);
+		str = itoa_base(p, 16);
+		result = putstr_fd_(str, 1, result);
+		free (str);
+	}
 	return (result);
 }
 
 int	print_unsigned(unsigned int u, char type, int result)
 {
-	if (type == 'u')
-		result = putstr_fd_(itoa_base(u, 10), 1, result);
-	if (type == 'x')
-		result = putstr_fd_(itoa_base(u, 16), 1, result);
-	else if (type == 'X')
-		result = putstr_fd_(ft_toupper_(itoa_base(u, 16)), 1, result);
+	char	*str;
+
+	if (u == 0)
+		result = putchar_fd_('0', 1, result);
+	else
+	{
+		if (type == 'u')
+		{
+			str = itoa_base(u, 10);
+			result = putstr_fd_(str, 1, result);
+		}
+		if (type == 'x')
+		{
+			str = itoa_base(u, 16);
+			result = putstr_fd_(str, 1, result);
+		}
+		else if (type == 'X')
+		{
+			str = itoa_base(u, 16);
+			result = putstr_fd_(ft_toupper_(str), 1, result);
+		}
+		free (str);
+	}
 	return (result);
 }
