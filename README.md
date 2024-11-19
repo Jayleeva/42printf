@@ -24,9 +24,9 @@ putchar_fd est appelée avec un '%' en argument.
 putchar_fd est appelée avec le prochain va_arg de int cast en char.
 - **s :**
 putstr_fd est appelée, avec le prochain va_arg de *char.
-- **d OU i :**
+- **d** OU **i :**
 itoa est appelée, avec le prochain va_arg de int. Puis, putstr_fd est appelée avec le résultat de l'itoa. Ce même résultat est alors free() pour éviter les leaks.
-- **u OU x OU X :**
+- **u** OU **x** OU **X :**
 printf_unsigned est appelée, avec le prochain va_arg de unsigned int et le char reçu.
 - **p :**
 printf_pointer est appelée, avec le prochain va_arg de unsigned long long.
