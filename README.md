@@ -47,4 +47,6 @@ itoa_base est appelé avec l'unsigned int reçu et la base 16. Puis, ft_to_upper
 
 Puis, putstr_fd est appelée avec le résultat de l'itoa. Ce même résultat est alors free() pour éviter les leaks.
 ## printf_pointer()
-
+**Transforme le pointeur en chaîne de caractères et l'envoie à l'impression**
+Une variable char* est créée afin de stocker temporairement le résultat de l'itoa_base.
+Une condition vérifie si l'unsigned long long reçu est égal à 0. Si c'est le cas, putstr_fd est appelée avec "0x0" en argument. Sinon, putstr_fd est appelée une première fois avec "0x" en argument, puis itoa_base est appelée avec l'unsigned long long reçu et la base 16 en arguments, et enfin putstr_fd est rappelée avec le résultat de l'itoa_base. Ce même résultat est alors free() pour éviter les leaks.
