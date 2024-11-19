@@ -6,7 +6,7 @@
 /*   By: cyglardo <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:22:08 by cyglardo          #+#    #+#             */
-/*   Updated: 2024/11/14 12:39:39 by cyglardo         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:43:53 by cyglardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	print_unsigned(unsigned int u, char type, int result)
 {
 	char	*str;
 
+	str = 0;
 	if (u == 0)
 		result = putchar_fd_('0', 1, result);
 	else
@@ -80,7 +81,7 @@ int	print_unsigned(unsigned int u, char type, int result)
 			str = itoa_base(u, 10);
 			result = putstr_fd_(str, 1, result);
 		}
-		if (type == 'x')
+		else if (type == 'x')
 		{
 			str = itoa_base(u, 16);
 			result = putstr_fd_(str, 1, result);
