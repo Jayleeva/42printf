@@ -3,7 +3,7 @@
 
 # Fonction variadique
 Une fonction variadique peut recevoir un nombre indéterminé d'arguments. Pour pouvoir les gérer, on utilise va_list, va_copy, va_start, va_arg, va_end.
-- **va_list :** type de variable qui liste les arguments reçus. On écrit: ``va_list list_name;``
+- **va_list :** type de variable qui liste les arguments d'une fonction variadique. On écrit: ``va_list list_name;``
 - **va_copy :** 
 - **va_start :** macro qui permet d'initialiser la liste au premier argument reçu. Il est nécessaire de l'utiliser avant de faire appel à va_arg. On écrit: ``va_start(list_name, param0)``
 - **va_arg :** macro qui permet d'accéder au prochain argument de la liste d'un type donné. On écrit: ``va_arg(list_name, param_type)``
