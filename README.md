@@ -3,11 +3,11 @@
 
 # Fonction variadique
 Une fonction variadique peut recevoir un nombre indéterminé d'arguments. Pour pouvoir les gérer, on utilise va_list, va_copy, va_start, va_arg, va_end.
-- **va_list :** type de variable qui liste les arguments reçus. On écrit: ``va_list list_name;``.
+- **va_list :** type de variable qui liste les arguments reçus. On écrit: ``va_list list_name;``
 - **va_copy :** 
-- **va_start :** macro qui permet d'initialiser la liste au premier argument reçu. On écrit: ``va_start(list_name, param0)``.
-- **va_arg :** macro qui permet d'accéder au prochain argument de la liste d'un type donné. On écrit: ``va_arg(list_name, param_type)``.
-- **va_end :** macro qui permet de fermer la liste. On écrit: ``va_end(list_name)``.
+- **va_start :** macro qui permet d'initialiser la liste au premier argument reçu. Il est nécessaire de l'utiliser avant de faire appel à va_arg. On écrit: ``va_start(list_name, param0)``
+- **va_arg :** macro qui permet d'accéder au prochain argument de la liste d'un type donné. On écrit: ``va_arg(list_name, param_type)``
+- **va_end :** macro qui permet de fermer la liste. Il est nécessaire de l'utiliser une fois qu'on a accédé à tous nos arguments. On écrit: ``va_end(list_name)``
 
 # ft_printf.h
 Le fichier ft_printf.h est le header: il contient tous les prototypes et include nécessaires à la compilation de la fonction.
