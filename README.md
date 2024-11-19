@@ -64,7 +64,7 @@ Une condition vérifie si l'unsigned long long reçu est égal à 0. Si c'est le
 ## to_upper()
 **Transforme les lettres minuscules de la chaîne reçue en majuscules correspondantes**
 
-Une boucle while parcourt la chaîne de caractères reçue. Une condition vérifie si le char indexé est une lettre minuscule: si c'est le cas, le char indexé est décrémenté de 32 afin de le changer en la lettre majuscule correspondante. Dnas tous les cas, l'index est incrémenté. Une fois la condition de sortie remplie, la fonction s'arrête et retourne la chaîne de caractères transformée.
+Une boucle while parcourt la chaîne de caractères reçue. Une condition vérifie si le char indexé est une lettre minuscule: si c'est le cas, le char indexé est décrémenté de 32 afin de le changer en la lettre majuscule correspondante. Dans tous les cas, l'index est incrémenté. Une fois la condition de sortie remplie, la fonction s'arrête et retourne la chaîne de caractères transformée.
 
 ## putstr_fd()
 **Envoie chaque caractère de la chaîne reçue à putchar_fd**
