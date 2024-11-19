@@ -10,7 +10,7 @@ Une fonction variadique peut recevoir un nombre indéterminé d'arguments. Pour 
 - **va_end :** macro qui permet de fermer la liste. Il est nécessaire de l'utiliser une fois qu'on a accédé à tous nos arguments. On écrit: ``va_end(list_name)``
 
 # Hexadécimaux
-Un chiffre hexadécimal est compté en base 16 ``0123456789abcdef`` ou ``0123456789ABCDEF`` plutôt qu'en base 10 ``0123456789``. Quand on arrive à 9 et qu'on incrémente de 1, au lieu de passer à 10, on passe à 'a' ou 'A'. Quand on arrive à 15 (écrit f ou F) et qu'on incrémente de 1, au lieu de passer à 16, on passe à 1a ou 1A.
+Un chiffre hexadécimal est compté en base 16 ``0123456789abcdef`` ou ``0123456789ABCDEF`` plutôt qu'en base 10 ``0123456789``. Quand on arrive à 9 et qu'on incrémente de 1, au lieu de passer à ``10``, on passe à ``a`` ou ``A``. Quand on arrive à 15 (écrit f ou F) et qu'on incrémente de 1, au lieu de passer à ``16``, on passe à ``1a`` ou ``1A``.
 
 # ft_printf.h
 Le fichier ft_printf.h est le header: il contient tous les prototypes et include nécessaires à la compilation de la fonction.
