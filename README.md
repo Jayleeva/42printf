@@ -76,4 +76,4 @@ Même fonction que dans la libft.
 # Fichier itoa_base.c
 **Transforme l'unsigned int reçu en chaîne de caratères et retourne cette dernière**
 
-Même chose qu'itoa, sans la prise en charge d'int négatifs et donc de INT_MIN; de plus, les divisions et modulo par 10 d'itoa sont ici faites par la base reçue en argument. Les hexadécimaux sont pris en charge par des conditions qui vérifient si le nombre actuel est plus grand que 9: si c'est le cas, au lieu de prendre la valeur n % base + '0', le char indexé prend la valeur n % base + 'a' - 10. 
+Même chose qu'itoa, sans la prise en charge d'int négatifs et donc de INT_MIN; de plus, les divisions et modulo par 10 d'itoa sont ici faites par la base reçue en argument. Les hexadécimaux sont pris en charge par des conditions qui vérifient si le nombre actuel est plus grand que 9: si c'est le cas, au lieu de prendre la valeur n % base + '0' (ex. : 123 % 10 = 3; 3 + 48 = 51; int 51 = '3'), le char indexé prend la valeur n % base + 'a' - 10 (ex. : 2c % 16 = 12; 12 + 97 - 10 = 99; int 99 = 'c'). 
