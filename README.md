@@ -12,6 +12,9 @@ Une fonction variadique peut recevoir un nombre indéterminé d'arguments. Pour 
 # Hexadécimaux
 Un chiffre hexadécimal est compté en base 16 ``0123456789abcdef`` ou ``0123456789ABCDEF`` plutôt qu'en base 10 ``0123456789``. Quand on arrive à 9 et qu'on incrémente de 1, au lieu de passer à ``10``, on passe à ``a`` ou ``A``. Quand on arrive à 15 (écrit ``f`` ou ``F``) et qu'on incrémente de 1, au lieu de passer à ``16``, on passe à ``1a`` ou ``1A``.
 
+# Long long
+Une variable de type long long permet notamment de prendre en charge des chiffres supérieurs à INT_MAX. Ici, j'en ai utilisée pour gérer l'impression de pointeurs, qui sont en réalité des adresses mémoire. Ces dernières s'écrivent en format hexadécimal, qui commence par 0x (par ex.: ``0x7ffee1a71aeb``).
+
 # ft_printf.h
 Le fichier ft_printf.h est le header: il contient tous les prototypes et include nécessaires à la compilation de la fonction.
 
