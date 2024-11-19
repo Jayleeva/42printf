@@ -18,30 +18,30 @@ Une boucle while parcourt la chaîne de caractères reçue en argument. Une cond
 
 Une variable char* est créée afin de stocker temporairement le résultat d'un éventuel itoa.
 Des conditions vérifient si le char reçu est un '%', 'c', 's', 'd' ou 'i', 'u' ou 'x' ou 'X', 'p', ou autre chose. 
-### %
+**- %**
 putchar_fd est appelée avec un '%' en argument.
-### c
+**- c**
 putchar_fd est appelée avec le prochain va_arg de int cast en char.
-### s
+**- s**
 putstr_fd est appelée, avec le prochain va_arg de *char.
-### d OU i
+**- d OU i**
 itoa est appelée, avec le prochain va_arg de int. Puis, putstr_fd est appelée avec le résultat de l'itoa. Ce même résultat est alors free() pour éviter les leaks.
-### u OU x OU X
+**- u OU x OU X**
 printf_unsigned est appelée, avec le prochain va_arg de unsigned int et le char reçu.
-### p
+**- p**
 printf_pointer est appelée, avec le prochain va_arg de unsigned long long.
-### autre
+**- autre**
 putchar_fd est appelée avec le char reçu en argument.
 
 # Fichier write.c
 ## printf_unsigned()
 Une variable char* est créée afin de stocker temporairement le résultat de l'itoa_base.
 Une condition vérifie si l'unsigned int reçu est égal à 0. Si c'est le cas, putchar_fd est appelée avec '0' en argument. Sinon, des conditions vérifient le type reçu est un 'u', un 'x' ou un 'X'. 
-### u
+**- u**
 itoa_base est appelé avec l'unsigned int reçu et la base 10.
-### x
+**- x**
 itoa_base est appelé avec l'unsigned int reçu et la base 16.
-### X
+**- X**
 itoa_base est appelé avec l'unsigned int reçu et la base 16. Puis, ft_to_upper est appelé avec le résultat de l'itoa_base.
 
 Puis, putstr_fd est appelée avec le résultat de l'itoa. Ce même résultat est alors free() pour éviter les leaks.
