@@ -36,6 +36,7 @@ putchar_fd est appelée avec le char reçu en argument.
 # Fichier write.c
 ## printf_unsigned()
 **Transforme les unsigned en chaîne de caractères et les envoie à l'impression**
+
 Une variable char* est créée afin de stocker temporairement le résultat de l'itoa_base.
 Une condition vérifie si l'unsigned int reçu est égal à 0. Si c'est le cas, putchar_fd est appelée avec '0' en argument. Sinon, des conditions vérifient le type reçu est un 'u', un 'x' ou un 'X'. 
 - **u :**
@@ -48,17 +49,27 @@ itoa_base est appelée avec l'unsigned int reçu et la base 16. Puis, ft_to_uppe
 Puis, putstr_fd est appelée avec le résultat de l'itoa. Ce même résultat est alors free() pour éviter les leaks.
 ## printf_pointer()
 **Transforme le pointeur en chaîne de caractères et l'envoie à l'impression**
+
 Une variable char* est créée afin de stocker temporairement le résultat de l'itoa_base.
 Une condition vérifie si l'unsigned long long reçu est égal à 0. Si c'est le cas, putstr_fd est appelée avec "0x0" en argument. Sinon, putstr_fd est appelée une première fois avec "0x" en argument, puis itoa_base est appelée avec l'unsigned long long reçu et la base 16 en arguments, et enfin putstr_fd est rappelée avec le résultat de l'itoa_base. Ce même résultat est alors free() pour éviter les leaks.
 
 ## to_upper()
 **Transforme les lettres minuscules de la chaîne reçue en majuscules correspondantes**
+
 Une boucle while parcourt la chaîne de caractères reçue. Une condition vérifie si le char indexé est une lettre minuscule: si c'est le cas, le char indexé est décrémenté de 32 afin de le changer en la lettre majuscule correspondante. Dnas tous les cas, l'index est incrémenté. Une fois la condition de sortie remplie, la fonction s'arrête et retourne la chaîne de caractères transformée.
 
 ## putstr_fd()
 **Envoie chaque caractère de la chaîne reçue à putchar_fd**
+
 Une condition vérifie si la chaîne reçue est nulle. Si c'est le cas, la fonction putstr_fd est rappelée avec "(null)" en argument, puis la fonction s'arrête et retourne le nombre de caractères imprimés. Sinon, une boucle while appelle putchar_fd avec le char indexé en argument, puis incrémente l'index. Une fois la condition de sortie remplie, la fonction s'arrête et retourne le nombre de caractères imprimés.
 
 ## putchar_fd()
 **Imprime le char reçu en argument et incrémente le compteur de caractères imprimés**
-Le char est passé à write(). Le nombre de caractères imprimés est incrémenté. La fonction retourne ce nombre. 
+
+Le char est passé à write(). Le nombre de caractères imprimés est incrémenté. La fonction retourne ce nombre.
+
+# Fichier itoa.c
+## itoa()
+**Transforme l'int reçu en chaîne de caratères et retourne cette dernière**
+
+Une variable char* est créée afin de stocker le résultat.
