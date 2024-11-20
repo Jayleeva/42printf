@@ -32,8 +32,6 @@ static int	call_ft_by_type(char type, va_list list, int result)
 		result = print_unsigned(va_arg(list, unsigned int), type, result);
 	else if (type == 'p')
 		result = print_pointer(va_arg(list, unsigned long long), result);
-	else
-		result = putchar_fd_(type, 1, result);
 	return (result);
 }
 
