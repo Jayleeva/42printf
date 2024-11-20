@@ -31,7 +31,7 @@ Une boucle while parcourt la chaîne de caractères reçue en argument. Une cond
 **Appelle la fonction appropriée en fonction du char reçu en argument**
 
 Une variable char* est créée afin de stocker temporairement le résultat d'un éventuel itoa.
-Des conditions vérifient si le char reçu est un '%', 'c', 's', 'd' ou 'i', 'u' ou 'x' ou 'X', 'p', ou autre chose. 
+Des conditions vérifient si le char reçu est un '%', 'c', 's', 'd' ou 'i', 'u' ou 'x' ou 'X', ou 'p'. Le cas où le char reçu ne serait aucun de ces caractères n'est pas pris en charge.
 - **% :**
 putchar_fd est appelée avec un '%' en argument.
 - **c :**
@@ -44,8 +44,6 @@ itoa est appelée, avec le prochain va_arg de int. Puis, putstr_fd est appelée 
 printf_unsigned est appelée, avec le prochain va_arg de unsigned int et le char reçu.
 - **p :**
 printf_pointer est appelée, avec le prochain va_arg de unsigned long long.
-- **autre :**
-putchar_fd est appelée avec le char reçu en argument.
 
 # Fichier write.c
 ## printf_unsigned()
