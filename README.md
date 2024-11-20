@@ -4,10 +4,10 @@
 # Fonction variadique
 Une fonction variadique peut recevoir un nombre indéterminé d'arguments. Pour pouvoir les gérer, on utilise va_list, va_copy, va_start, va_arg, va_end.
 - **va_list :** type de variable qui liste les arguments d'une fonction variadique. On écrit: ``va_list list_name;``
-- **va_copy :** macro qui permet de copier l'état de la va_list, par ex. pour parcourir la liste plusieurs fois dans la même fonction.
-- **va_start :** macro qui permet d'initialiser la liste au premier argument reçu. Il est nécessaire de l'utiliser avant de faire appel à va_arg. On écrit: ``va_start(list_name, arg0)``
+- **va_copy :** macro qui permet de copier l'état de la va_list, par ex. pour parcourir la liste plusieurs fois dans la même fonction. On écrit: ``va_copy(copy_name, list_name);``
+- **va_start :** macro qui permet d'initialiser la liste au premier argument reçu. Il est nécessaire de l'utiliser avant de faire appel à va_arg. On écrit: ``va_start(list_name, arg0);``
 - **va_arg :** macro qui permet d'accéder au prochain argument de la liste d'un type donné. On écrit: ``va_arg(list_name, arg_type)``
-- **va_end :** macro qui permet de fermer la liste. Il est nécessaire de l'utiliser une fois qu'on a accédé à tous nos arguments. On écrit: ``va_end(list_name)``
+- **va_end :** macro qui permet de fermer la liste. Il est nécessaire de l'utiliser une fois qu'on a accédé à tous nos arguments. On écrit: ``va_end(list_name);``
 
 # Hexadécimaux
 Un chiffre hexadécimal est compté en base 16 ``0123456789abcdef`` ou ``0123456789ABCDEF`` plutôt qu'en base 10 ``0123456789``. Quand on arrive à 9 et qu'on incrémente de 1, au lieu de passer à ``10``, on passe à ``a`` ou ``A``. Quand on arrive à 15 (écrit ``f`` ou ``F``) et qu'on incrémente de 1, au lieu de passer à ``16``, on passe à ``10``.
